@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YesYes Tea Company</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Poppins:wght@300;400;500;600&display=swap" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            background-color: #fcfaf7;
+            scroll-behavior: smooth;
+        }
+
+        .playfair {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1544787219-7f47ccb76574?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .tea-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #4b6b4b;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-active {
+            display: flex !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <h1 class="text-2xl font-bold playfair text-[#4b6b4b]">
+                    YesYes<span class="text-[#8b5d33]">Tea</span>
+                </h1>
+            </div>
+            
+            <div class="hidden md:flex space-x-8">
+                <a href="#" class="nav-link text-gray-700 hover:text-[#4b6b4b] transition">Home</a>
+                <a href="#collection" class="nav-link text-gray-700 hover:text-[#4b6b4b] transition">Collection</a>
+                <a href="#about" class="nav-link text-gray-700 hover:text-[#4b6b4b] transition">About</a>
+                <a href="#process" class="nav-link text-gray-700 hover:text-[#4b6b4b] transition">Our Process</a>
+                <a href="#contact" class="nav-link text-gray-700 hover:text-[#4b6b4b] transition">Contact</a>
+            </div>
+            
+            <div class="flex items-center space-x-4">
+                <button class="hidden md:block bg-[#4b6b4b] text-white px-6 py-2 rounded-full hover:bg-[#3a5a3a] transition">
+                    Shop Now
+                </button>
+                
+                <button class="md:hidden text-gray-700" id="mobile-menu-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div class="md:hidden hidden bg-white w-full absolute top-full left-0 shadow-md" id="mobile-menu">
+            <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
+                <a href="#" class="text-gray-700 hover:text-[#4b6b4b] py-2 transition">Home</a>
+                <a href="#collection" class="text-gray-700 hover:text-[#4b6b4b] py-2 transition">Collection</a>
+                <a href="#about" class="text-gray-700 hover:text-[#4b6b4b] py-2 transition">About</a>
+                <a href="#process" class="text-gray-700 hover:text-[#4b6b4b] py-2 transition">Our Process</a>
+                <a href="#contact" class="text-gray-700 hover:text-[#4b6b4b] py-2 transition">Contact</a>
+                <button class="bg-[#4b6b4b] text-white px-6 py-2 rounded-full hover:bg-[#3a5a3a] transition w-full">Shop Now</button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-bg h-[80vh] flex items-center">
+        <div class="container mx-auto px-4">
+            <div class="max-w-2xl text-white">
+                <h1 class="text-4xl md:text-6xl font-bold playfair mb-4">Discover the Art of Fine Tea</h1>
+                <p class="text-lg md:text-xl mb-8">Handcrafted blends sourced from the world's finest tea gardens.</p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <button class="bg-[#4b6b4b] text-white px-8 py-3 rounded-full hover:bg-[#3a5a3a] transition">Explore Collection</button>
+                    <button class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-full hover:bg-white hover:text-[#4b6b4b] transition">Learn More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section id="collection" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <!-- Section Header -->
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold playfair mb-2">Our Signature Collection</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Discover our carefully curated selection of premium teas, each with its own unique character and flavor.
+                </p>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Tea Card 1 -->
+                <div class="tea-card bg-[#fcfaf7] rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="h-64 bg-[#e3ebe3] flex items-center justify-center">
+                        <div class="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16 flex items-center justify-center">
+                            <i class="fas fa-leaf text-3xl text-[#4b6b4b]"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold playfair mb-2">Emerald Green Tea</h3>
+                        <p class="text-gray-600 mb-4">
+                            A delicate and refreshing green tea with subtle floral notes and a smooth finish.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-[#4b6b4b] font-semibold">$18.95</span>
+                            <button class="bg-[#4b6b4b] text-white px-4 py-2 rounded-full hover:bg-[#3a5a3a] transition text-sm">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tea Card 2 -->
+                <div class="tea-card bg-[#fcfaf7] rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="h-64 bg-[#ebe3d5] flex items-center justify-center">
+                        <div class="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16 flex items-center justify-center">
+                            <i class="fas fa-mug-hot text-3xl text-[#8b5d33]"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold playfair mb-2">Royal Earl Grey</h3>
+                        <p class="text-gray-600 mb-4">
+                            Our signature black tea blend with bergamot oil, creating a classic aromatic experience.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-[#4b6b4b] font-semibold">$16.95</span>
+                            <button class="bg-[#4b6b4b] text-white px-4 py-2 rounded-full hover:bg-[#3a5a3a] transition text-sm">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tea Card 3 -->
+                <div class="tea-card bg-[#fcfaf7] rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="h-64 bg-[#e8e3eb] flex items-center justify-center">
+                        <div class="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16 flex items-center justify-center">
+                            <i class="fas fa-blender text-3xl text-[#8b5d33]"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold playfair mb-2">Lavender Dream</h3>
+                        <p class="text-gray-600 mb-4">
+                            A soothing herbal infusion with lavender, chamomile, and a hint of vanilla.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-[#4b6b4b] font-semibold">$19.95</span>
+                            <button class="bg-[#4b6b4b] text-white px-4 py-2 rounded-full hover:bg-[#3a5a3a] transition text-sm">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button class="border-2 border-[#4b6b4b] text-[#4b6b4b] px-8 py-3 rounded-full hover:bg-[#4b6b4b] hover:text-white transition">
+                    View All
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-[#f5f5f0]">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8 flex justify-center">
+                    <div class="relative">
+                        <div class="bg-[#e3ebe3] h-80 w-80 rounded-lg mx-auto flex items-center justify-center">
+                            <div class="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16 flex items-center justify-center">
+                                <i class="fas fa-store text-4xl text-[#4b6b4b]"></i>
+                            </div>
+                        </div>
+                        <div class="absolute top-10 left-10 right-10 bottom-10 border-2 border-[#4b6b4b] rounded-lg"></div>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl font-bold playfair mb-4">Our Story</h2>
+                    <p class="text-gray-600 mb-4">
+                        Founded in 2010, YesYes Tea Company began with a simple mission: to share exceptional tea experiences with the world.
+                    </p>
+                    <p class="text-gray-600 mb-6">
+                        Today, we work directly with small tea gardens across the globe to bring you the finest single-origin teas, crafted with care.
+                    </p>
+                    <button class="bg-[#4b6b4b] text-white px-6 py-3 rounded-full hover:bg-[#3a5a3a] transition">
+                        Learn More
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold playfair mb-2">Our Process</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    From garden to cup, we ensure quality at every step.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Step 1 -->
+                <div class="text-center">
+                    <div class="bg-[#f5f5f0] h-24 w-24 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-[#4b6b4b]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18v-5.25m0 0a6.01 6.01 0 00-1.5-5.189A6.01 6.01 0 0012 6a6.01 6.01 0 011.5 1.561A6.01 6.01 0 0112 12.75z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold playfair mb-2">Thoughtful Sourcing</h3>
+                    <p class="text-gray-600">
+                        We partner with ethical tea gardens that prioritize sustainable farming practices and fair treatment of workers.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="text-center">
+                    <div class="bg-[#f5f5f0] h-24 w-24 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-[#4b6b4b]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 3.104v5.714a2.25 2.25 0 002.25 2.25h5.714a2.25 2.25 0 010 4.5H6.281l-1.5 1.5" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold playfair mb-2">Artisanal Blending</h3>
+                    <p class="text-gray-600">
+                        Our master tea blenders craft unique recipes that balance flavor, aroma, and therapeutic benefits.
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="text-center">
+                    <div class="bg-[#f5f5f0] h-24 w-24 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-[#4b6b4b]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.182 15.182a4.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold playfair mb-2">Quality Assurance</h3>
+                    <p class="text-gray-600">
+                        Every batch is tested for quality, freshness, and consistency before being carefully packaged and delivered.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-[#e3ebe3]">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold playfair mb-2">What Our Customers Say</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Join thousands of tea enthusiasts who have made YesYes Tea part of their daily ritual.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="h-12 w-12 rounded-full bg-[#f5f5f0] flex items-center justify-center mr-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#4b6b4b]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Sarah Johnson</h4>
+                            <div class="flex text-yellow-400">
+                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        "The Emerald Green Tea has become my morning ritual. The flavor is so pure and refreshing, unlike any other tea I've had."
+                    </p>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="h-12 w-12 rounded-full bg-[#f5f5f0] flex items-center justify-center mr-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#4b6b4b]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Michael Chen</h4>
+                            <div class="flex text-yellow-400">
+                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        "As a tea connoisseur, I appreciate the attention to detail in every blend. The Royal Earl Grey is perfection."
+                    </p>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="h-12 w-12 rounded-full bg-[#f5f5f0] flex items-center justify-center mr-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#4b6b4b]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Emma Rodriguez</h4>
+                            <div class="flex text-yellow-400">
+                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"The Lavender Dream has helped me wind down after long days. The packaging is beautiful and the tea quality is unmatched."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-16 bg-[#f5f5f0]">
+        <div class="container mx-auto px-4">
+            <div class="max-w-2xl mx-auto text-center">
+                <h2 class="text-3xl font-bold playfair mb-4">Join Our Tea Journey</h2>
+                <p class="text-gray-600 mb-6">Subscribe to receive tea inspiration, special offers, and brewing tips.</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <input type="email" placeholder="Your email address" class="px-6 py-3 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#a3a5a3] w-full sm:w-auto" />
+                    <button class="bg-[#4b6b4b] text-white px-6 py-3 rounded-full hover:bg-[#3a5a3a] transition">Subscribe</button>
+                </div>
+                <p class="text-gray-500 text-sm mt-4">We respect your privacy and will never share your information.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row">
+                <!-- Contact Info -->
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                    <h2 class="text-3xl font-bold playfair mb-4">Get In Touch</h2>
+                    <p class="text-gray-600 mb-6">Have questions about our teas or need assistance? We'd love to hear from you.</p>
+                    <div class="space-y-4">
+                        <!-- Email -->
+                        <div class="flex items-start">
+                            <div class="bg-[#f5f5f0] h-10 w-10 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#4b6b4b]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25H4.5a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0L12 13.5 2.25 6.75" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Email</h4>
+                                <p class="text-gray-600">hello@yesyestea.com</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Phone -->
+                        <div class="flex items-start">
+                            <div class="bg-[#f5f5f0] h-10 w-10 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#4b6b4b]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-2.25a2.25 2.25 0 00-2.25-2.25h-1.125a2.25 2.25 0 01-2.025-1.35l-.675-1.575a2.25 2.25 0 00-2.025-1.35h-1.5a2.25 2.25 0 01-2.25-2.25v-1.5a2.25 2.25 0 00-1.35-2.025l-1.575-.675a2.25 2.25 0 01-1.35-2.025V6.75A2.25 2.25 0 014.5 4.5H2.25A2.25 2.25 0 000 6.75z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Phone</h4>
+                                <p class="text-gray-600">+1 (555) 123-4567</p>
+                            </div>
+                        </div>
+
+                        <!-- Visit Location -->
+                        <div class="flex items-start">
+                            <div class="bg-[#f5f5f0] h-10 w-10 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#4b6b4b]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25s-7.5-4.108-7.5-11.25a7.5 7.5 0 1115 0z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Visit Our Tea Room</h4>
+                                <p class="text-gray-600">123 Tea Garden Lane<br>Portland, OR 97205</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="md:w-1/2">
+                    <form class="bg-[#f5f5f0] p-6 rounded-lg">
+                        <div class="mb-4">
+                            <label for="name" class="block text-gray-700 mb-2">Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4b6b4b]" />
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="email" class="block text-gray-700 mb-2">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4b6b4b]" />
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="subject" class="block text-gray-700 mb-2">Subject</label>
+                            <input type="text" id="subject" class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4b6b4b]" />
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-700 mb-2">Message</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4b6b4b]"></textarea>
+                        </div>
+                        
+                        <button class="bg-[#4b6b4b] text-white px-6 py-3 rounded-full hover:bg-[#3a5a3a] transition w-full">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#333] text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Brand Info -->
+                <div>
+                    <h3 class="text-xl font-bold playfair mb-4">
+                        YesYes<span class="text-[#a8c0a8]">Tea</span>
+                    </h3>
+                    <p class="text-gray-300 mb-4">Crafting exceptional tea experiences since 2010.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white transition">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition">
+                            <i class="fab fa-pinterest text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Shop Section -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Shop</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">All Teas</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Green Teas</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Black Teas</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Herbal Infusions</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Tea Accessories</a></li>
+                    </ul>
+                </div>
+
+                <!-- Learn -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Learn</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Brewing Guides</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Tea Journal</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Tea Origins</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Health Benefits</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Sustainability</a></li>
+                    </ul>
+                </div>
+
+                <!-- Company -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">About Us</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Contact</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Careers</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Wholesale</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400 text-sm">
+                <p>2023 YesYes Tea Company</p>
+            </div> 
+        </div> 
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton?.addEventListener('click', () => {
+            mobileMenu.classList.toggle('mobile-menu-active');
+        });
+
+        // Close mobile menu when clicking on a link
+        const mobileLinks = mobileMenu?.querySelectorAll('a');
+        mobileLinks?.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('mobile-menu-active');
+            });
+        });
+
+        // Smooth scrolling for anchor links with offset for fixed header
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const headerHeight = document.querySelector('nav').offsetHeight;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
